@@ -2,6 +2,7 @@ import React from 'react'
 import { Button, Grid, Space } from 'antd-mobile'
 import { RedoOutline, HeartOutline,RightOutline } from 'antd-mobile-icons'
 import Waterfall from '../../components/Waterfall'
+import frameImage from '../../assets/Frame.png'
 import {
     Routes,
     Route,
@@ -24,19 +25,19 @@ export default () => {
                     </Space>
                 </span>
             </div>
-            <button className='btn' onClick={()=>navigate("/generate")}>Upload Inspiration</button>
+            <button className='btn' onClick={()=>navigate("/generate")}>Upload Inspiration <img className='png' src={frameImage}/></button>
         </header>
        
         <main>
             <div className='title'>
-                <span>Moodboard</span>
+                <span className='text'>Moodboard</span>
                 <span style={{float: 'right'}}>
-                    <Button >
+                    <div className='dressBtn'>
                         <Space>
                             <span>Dress</span>
-                            <RightOutline />
+                            <RightOutline fontSize={10}/>
                         </Space>
-                    </Button>
+                    </div>
                 </span>
             </div>
             <Waterfall/>

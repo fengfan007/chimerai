@@ -4,7 +4,7 @@ import Title from '../../components/Title/index'
 import './index.less'
 import { useNavigate} from "react-router-dom";
 import { CloseOutline,CameraOutline,LinkOutline } from 'antd-mobile-icons'
-import img from '../../assets/Vector.svg'
+import share from '../../assets/Share.png'
 export default () => {
 
     const navigate = useNavigate();
@@ -16,7 +16,13 @@ export default () => {
         'https://chimerai-main.oss-cn-beijing.aliyuncs.com/static/model_cover/00041-namilia-fall-2024-.jpg',
         'https://chimerai-main.oss-cn-beijing.aliyuncs.com/static/model_cover/the-row-resort-2024.jpg',
         'https://chimerai-main.oss-cn-beijing.aliyuncs.com/static/model_cover/14.jpg',
-        'https://chimerai-main.oss-cn-beijing.aliyuncs.com/static/model_cover/9.jpg'
+        'https://chimerai-main.oss-cn-beijing.aliyuncs.com/static/model_cover/9.jpg',
+        'https://chimerai-main.oss-cn-beijing.aliyuncs.com/static/model_cover/im_1718120603971599_000_126895183.png',
+        'https://chimerai-main.oss-cn-beijing.aliyuncs.com/static/model_cover/Chimer_00003773.png',
+        'https://chimerai-main.oss-cn-beijing.aliyuncs.com/static/model_cover/im_1717499609625525_000_1919441433.png',
+        'https://chimerai-main.oss-cn-beijing.aliyuncs.com/static/model_cover/girlcore.jpg',
+        'https://chimerai-main.oss-cn-beijing.aliyuncs.com/static/model_cover/AdamLippes.jpeg'
+
     ]
     const [skeletonShow,setSkeletonShow] = useState(true);
     const [num, setNum] = useState(0)
@@ -36,8 +42,10 @@ export default () => {
   return (
     <div className='regenerate-box'>
          <div style={{padding:'10px'}}>
-            <CloseOutline onClick={()=>navigate("/generate")}/>
-            <span style={{float:'right'}}><LinkOutline /></span>
+            <CloseOutline  fontSize={25} onClick={()=>navigate("/generate")}/>
+            <span style={{float:'right'}}>
+                <img style={{width:'25px'}} src={share} alt="" />
+            </span>
         </div>
         {
             skeletonShow && <ProgressBar
@@ -57,9 +65,8 @@ export default () => {
             }
            
         </header>
-        <div style={{padding:'10px'}}>
-            <span><Checkbox defaultChecked>Select All</Checkbox></span>
-            <span style={{float:'right'}}><CameraOutline /></span>
+        <div style={{padding:'.5rem 1.25rem'}}>
+            <span><Checkbox style={{'--icon-size':'14px','--font-size':'14px'}}>Select All</Checkbox></span>
         </div>
         
         <main>
@@ -68,7 +75,13 @@ export default () => {
                 list.map((item)=>{
                     return skeletonShow?<Skeleton animated className="check-box" />:
                     <div className='check-box'>
-                        <Checkbox className='check-btn'></Checkbox>
+                        <Checkbox 
+                            style={{
+                                '--icon-size': '14px',
+                            }} 
+                            className='check-btn'>
+
+                            </Checkbox>
                         <Image src={item} className='imageItem' fit='fill'/>
                     </div>
                     

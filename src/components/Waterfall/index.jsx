@@ -1,5 +1,5 @@
 import React , { useState }  from 'react';  
-import { Image, ImageViewer,Button } from 'antd-mobile'
+import { Image, ImageViewer,Footer } from 'antd-mobile'
 import './index.css'; // 确保正确引入CSS文件  
   
  // 多张图片预览
@@ -30,25 +30,35 @@ function Waterfall(){
         'https://chimerai-main.oss-cn-beijing.aliyuncs.com/static/model_cover/00041-namilia-fall-2024-.jpg',
         'https://chimerai-main.oss-cn-beijing.aliyuncs.com/static/model_cover/the-row-resort-2024.jpg',
         'https://chimerai-main.oss-cn-beijing.aliyuncs.com/static/model_cover/14.jpg',
-        'https://chimerai-main.oss-cn-beijing.aliyuncs.com/static/model_cover/9.jpg'
+        'https://chimerai-main.oss-cn-beijing.aliyuncs.com/static/model_cover/9.jpg',
+        'https://chimerai-main.oss-cn-beijing.aliyuncs.com/static/model_cover/im_1718120603971599_000_126895183.png',
+        'https://chimerai-main.oss-cn-beijing.aliyuncs.com/static/model_cover/Chimer_00003773.png',
+        'https://chimerai-main.oss-cn-beijing.aliyuncs.com/static/model_cover/im_1717499609625525_000_1919441433.png',
+        'https://chimerai-main.oss-cn-beijing.aliyuncs.com/static/model_cover/girlcore.jpg',
+        'https://chimerai-main.oss-cn-beijing.aliyuncs.com/static/model_cover/AdamLippes.jpeg'
+
     ]
    const openView = (i)=>{
     setImgIndex(i)
     setVisible(true)
    }
     return (
-        <div className="masonry">  
-            {items.map((item, index) => (  
-            <div key={index} className="masonry-item">  
-                <Image lazy src={item} onClick={()=>openView(index)}/>
-                {
-                    visible && <Multi items={items} index={imgIndex} provisible={visible}/>
-                }
-                
-                {/* <img style={{width:'100%',borderRadius:'10px'}} src={item}></img> */}
+        <>
+            <div className="masonry">  
+                {items.map((item, index) => (  
+                <div key={index} className="masonry-item">  
+                    <Image lazy src={item} onClick={()=>openView(index)}/>
+                    {
+                        visible && <Multi items={items} index={imgIndex} provisible={visible}/>
+                    }
+                    
+                    {/* <img style={{width:'100%',borderRadius:'10px'}} src={item}></img> */}
+                </div>  
+                ))}  
             </div>  
-            ))}  
-        </div>  
+            <Footer label='没有更多了'></Footer>
+        </>
+        
     )
 }
   

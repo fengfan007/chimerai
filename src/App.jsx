@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { NavBar, TabBar } from 'antd-mobile'
 import {
   Route,
@@ -19,11 +19,28 @@ import Order from './pages/Order'
 import Profile from './pages/Profile'
 import ErrorPage from "./error-page";
 import './App.less'
+import design from './assets/design.png'
+import design2 from './assets/design2.png'
+
+import assist from './assets/assist.png'
+import assist2 from './assets/assist2.png'
+import order from './assets/order.png'
+import order2 from './assets/order2.png'
+import profile from './assets/profile.png'
+import profile2 from './assets/profile2.png'
 
 const Bottom = ()=>{
+
   const navigate = useNavigate()
   const location = useLocation()
   const { pathname } = location
+
+  useEffect(()=>{
+    if(pathname == '' || pathname == '/'){
+      navigate('/deisgn')
+    }
+  })
+  
 
   const setRouteActive = (value) => {
     navigate(value)
@@ -33,26 +50,34 @@ const Bottom = ()=>{
     {
       key: '/deisgn',
       title: 'Deisgn',
-      icon: <AppOutline />,
+      icon: (active)=>{
+        return <div><img style={{width:'25px'}} src={active ? design:design2}/></div>
+      },
     },
     {
       key: '/assist',
       title: 'Assist',
-      icon: <UnorderedListOutline />,
+      icon: (active)=>{
+        return <div><img style={{width:'25px'}} src={active ? assist2:assist}/></div>
+      },
     },
     {
       key: '/order',
       title: 'Order',
-      icon: <MessageOutline />,
+      icon: (active)=>{
+        return <div><img style={{width:'25px'}} src={active ? order2:order}/></div>
+      },
     },
     {
       key: '/profile',
       title: 'Profile',
-      icon: <UserOutline />,
+      icon: (active)=>{
+        return <div><img style={{width:'25px'}} src={active ? profile2:profile}/></div>
+      },
     },
   ]
   return (
-    <TabBar activeKey={pathname} onChange={value => setRouteActive(value)}>
+    <TabBar defaultActiveKey="/deisgn" activeKey={pathname == '/'?'/deisgn':pathname} onChange={value => setRouteActive(value)}>
       {tabs.map(item => (
         <TabBar.Item key={item.key} icon={item.icon} title={item.title} />
       ))}
