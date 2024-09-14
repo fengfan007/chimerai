@@ -25,6 +25,7 @@ export default () => {
         'https://chimerai-main.oss-cn-beijing.aliyuncs.com/static/model_cover/AdamLippes.jpeg'
     ]
     const [visible, setVisible] = useState(true);
+    const [activeimage,setActiveimage] = useState('');
     useEffect(()=>{
         setTimeout(() => {
             setVisible(false)
@@ -54,7 +55,11 @@ export default () => {
                 }
             >
                 <div className='bg'>
-                    <Image height="80%"  src={img} />
+                    {
+                        activeimage?<Image width="100%"  src={activeimage} />:
+                        <Image height="80%"  src={img} />
+                    }
+                    
                 </div>
             </Popover>
         </header>
@@ -63,16 +68,18 @@ export default () => {
             <span style={{float:'right'}} ><CameraOutline fontSize={20}/></span>
         </div>
         <main>
+            <div className='images-box'>
             {
                 items.map((item,index)=>{
                     return (
                         <div className='imgagesList' key={index}>
-                            <Image src={item} className='imageItem' fit='fill'/>
+                            <Image onClick={()=>setActiveimage(item)} src={item} className='imageItem' fit='fill'/>
                         </div>
                     )
                     
                 })
             }
+            </div>
         </main>
     </div>
   )

@@ -3,9 +3,8 @@ import { Image, ImageViewer,Footer } from 'antd-mobile'
 import './index.css'; // 确保正确引入CSS文件  
   
  // 多张图片预览
- const Multi = ({items,index,provisible}) => {
+ const Multi = ({items,index,provisible,closeImage}) => {
     const [visible, setVisible] = useState(provisible)
-    debugger
     return (
     <>
         <ImageViewer.Multi
@@ -13,7 +12,7 @@ import './index.css'; // 确保正确引入CSS文件
             visible={visible}
             defaultIndex={index}
             onClose={() => {
-                setVisible(false)
+                closeImage()
             }}
         />
     </>
@@ -49,10 +48,9 @@ function Waterfall(){
                 <div key={index} className="masonry-item">  
                     <Image lazy src={item} onClick={()=>openView(index)}/>
                     {
-                        visible && <Multi items={items} index={imgIndex} provisible={visible}/>
+                        visible && <Multi items={items} index={imgIndex} provisible={visible} closeImage={()=>setVisible(false)}/>
                     }
                     
-                    {/* <img style={{width:'100%',borderRadius:'10px'}} src={item}></img> */}
                 </div>  
                 ))}  
             </div>  

@@ -39,6 +39,8 @@ export default () => {
     setInterval(() => {
         setNum(100)
     }, 1000);
+
+    const [value, setValue] = useState([])
   return (
     <div className='regenerate-box'>
          <div style={{padding:'10px'}}>
@@ -66,28 +68,49 @@ export default () => {
            
         </header>
         <div style={{padding:'.5rem 1.25rem'}}>
-            <span><Checkbox style={{'--icon-size':'14px','--font-size':'14px'}}>Select All</Checkbox></span>
+            <span>
+                <Checkbox 
+                    ndeterminate={value.length > 0 && value.length < list.length}
+                    checked={value.length === list.length}
+                    style={{'--icon-size':'14px','--font-size':'14px'}} 
+                    onChange={checked => {
+                    if (checked) {
+                        setValue(list)
+                    } else {
+                        setValue([])
+                    }
+                    }}>Select All</Checkbox>
+            </span>
         </div>
         
         <main>
             <div className='imgagesList'>
-            {
-                list.map((item)=>{
-                    return skeletonShow?<Skeleton animated className="check-box" />:
-                    <div className='check-box'>
-                        <Checkbox 
-                            style={{
-                                '--icon-size': '14px',
-                            }} 
-                            className='check-btn'>
+                <Checkbox.Group
+                    value={value}
+                    onChange={v => {
+                        setValue(v)
+                    }}
+                >
+                {
+                    list.map((item)=>{
+                        return skeletonShow?<Skeleton animated className="check-box" />:
+                        <div className='check-box'>
+                            <Checkbox 
+                                key={item} value={item}
+                                style={{
+                                    '--icon-size': '14px',
+                                }} 
+                                className='check-btn'>
 
-                            </Checkbox>
-                        <Image src={item} className='imageItem' fit='fill'/>
-                    </div>
-                    
-                    
-                })
-            }
+                                </Checkbox>
+                            <Image src={item}  className='imageItem' fit='fill'/>
+                        </div>
+                        
+                        
+                    })
+                }
+
+                </Checkbox.Group>
             </div>
         </main>
         <footer>
