@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Image, Space,Popover } from 'antd-mobile'
-import Title from '../../components/Title/index'
+import { Image, Space,Popover,Toast } from 'antd-mobile'
 import './index.less'
 import { DownOutline,CameraOutline,RightOutline,CloseOutline } from 'antd-mobile-icons'
 import vector from '../../assets/Vector.svg'
@@ -65,7 +64,14 @@ export default () => {
         </header>
         <div style={{padding:'10px'}}>
             <span>Recents <DownOutline /></span>
-            <span style={{float:'right'}} ><CameraOutline fontSize={20}/></span>
+            <span style={{float:'right'}} >
+                <CameraOutline fontSize={20} onClick={() => {
+                    Toast.show({
+                        icon: 'fail',
+                        content: '功能暂未开放！',
+                    })
+                }}/>
+            </span>
         </div>
         <main>
             <div className='images-box'>

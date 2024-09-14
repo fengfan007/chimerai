@@ -1,19 +1,13 @@
-import React from 'react'
-import { Button, Grid, Space } from 'antd-mobile'
-import { RedoOutline, HeartOutline,RightOutline } from 'antd-mobile-icons'
+import React, { useState } from 'react'
+import { Toast, Grid, Space } from 'antd-mobile'
+import { RedoOutline, HeartOutline,RightOutline,HeartFill } from 'antd-mobile-icons'
 import Waterfall from '../../components/Waterfall'
 import frameImage from '../../assets/Frame.png'
-import {
-    Routes,
-    Route,
-    Link,
-    NavLink,
-    Navigate,
-    useNavigate,
-  } from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import './index.less'
 export default () => {
     const navigate = useNavigate();
+    const [active, setActive] = useState(false)
   return (
     <div className="deisgn-box">
         <header>
@@ -21,7 +15,13 @@ export default () => {
                 <span>CHIMER AI</span>
                 <span style={{float: 'right'}}>
                     <Space>
-                        <RedoOutline /><HeartOutline />
+                        <RedoOutline onClick={()=> location.reload()}/>
+                        {
+                            !active?
+                            <HeartOutline  onClick={()=>setActive(active => !active)}/>:
+                            <HeartFill color='#FA8728' onClick={()=>setActive(active => !active)}/>
+                        }
+                        
                     </Space>
                 </span>
             </div>
@@ -32,7 +32,12 @@ export default () => {
             <div className='title'>
                 <span className='text'>Moodboard</span>
                 <span style={{float: 'right'}}>
-                    <div className='dressBtn'>
+                    <div className='dressBtn' onClick={() => {
+                            Toast.show({
+                                icon: 'fail',
+                                content: '功能暂未开放！',
+                            })
+                        }}>
                         <Space>
                             <span>Dress</span>
                             <RightOutline fontSize={10}/>
