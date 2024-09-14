@@ -3,7 +3,7 @@ import { Image, Space,Popover } from 'antd-mobile'
 import Title from '../../components/Title/index'
 import './index.less'
 import { DownOutline,CameraOutline,RightOutline,CloseOutline } from 'antd-mobile-icons'
-import img from '../../assets/Vector.svg'
+import vector from '../../assets/Vector.svg'
 import right from '../../assets/Arrow-right.png'
 import { useNavigate} from "react-router-dom";
 export default () => {
@@ -36,7 +36,7 @@ export default () => {
         <div style={{padding:'10px'}}>
             <CloseOutline fontSize={25} onClick={()=>navigate("/deisgn")}/>
             
-            <span style={{float:'right',color:' #FA8728'}} onClick={()=>navigate("/regenerate")}>
+            <span style={{float:'right',color:' #FA8728',fontWeight:'500'}} onClick={()=>navigate("/regenerate")}>
                 <Space>
                     Generate
                     <img style={{width:'20px',verticalAlign:'middle'}} src={right}/>
@@ -57,7 +57,7 @@ export default () => {
                 <div className='bg'>
                     {
                         activeimage?<Image width="100%"  src={activeimage} />:
-                        <Image height="80%"  src={img} />
+                        <Image height="80%"  src={vector} />
                     }
                     
                 </div>

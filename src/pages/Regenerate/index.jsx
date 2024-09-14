@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Image, Swiper,Checkbox ,Skeleton,ProgressBar} from 'antd-mobile'
+import { Image, Swiper,Checkbox ,Skeleton,ProgressBar,Dialog} from 'antd-mobile'
 import Title from '../../components/Title/index'
 import './index.less'
 import { useNavigate} from "react-router-dom";
@@ -41,6 +41,15 @@ export default () => {
     }, 1000);
 
     const [value, setValue] = useState([])
+    const RegenerateEvent = ()=>{
+        Dialog.alert({
+            content: '生成成功，3 秒后返回首页！',
+            onConfirm: () => {
+                navigate("/deisgn")
+            },
+        })
+        
+    }
   return (
     <div className='regenerate-box'>
          <div style={{padding:'10px'}}>
@@ -114,7 +123,7 @@ export default () => {
             </div>
         </main>
         <footer>
-            <button className='btn' onClick={()=>navigate("/generate")}>Regenerate</button>
+            <button className='btn' onClick={()=>RegenerateEvent()}>Regenerate</button>
         </footer>
        
         
