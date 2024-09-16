@@ -11,8 +11,12 @@ const CameraCapture = ({backSrc}) => {
   const getMedia = () => {
     setVisible(true)
     const constraints = {
-      video: { width: '100%', height: '100vh' },
-      facingMode: { exact: "environment" } 
+      video: { 
+        width: '100vw', 
+        height: '100vh',
+        facingMode: { exact: "environment" } 
+     },
+      
     };
     navigator.mediaDevices.getUserMedia(constraints)
       .then((stream) => {
@@ -25,8 +29,8 @@ const CameraCapture = ({backSrc}) => {
   };
   const takePhoto = () => {
     const canvas = document.createElement('canvas');
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    canvas.width = videoRef.current.videoWidth;
+    canvas.height = videoRef.current.videoHeight;
     canvas.getContext('2d').drawImage(videoRef.current, 0, 0, canvas.width, canvas.height);
     setVideoSrc(canvas.toDataURL('image/png'));
   };
