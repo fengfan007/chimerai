@@ -1,7 +1,6 @@
 import React , { useState }  from 'react';  
 import { Image, ImageViewer,Footer } from 'antd-mobile'
 import './index.css'; // 确保正确引入CSS文件  
-  
  // 多张图片预览
  const Multi = ({items,index,provisible,closeImage}) => {
     const [visible, setVisible] = useState(provisible)
@@ -43,10 +42,10 @@ function Waterfall(){
    }
     return (
         <>
-            <div className="masonry">  
+            <div className="masonry" >  
                 {items.map((item, index) => (  
-                <div key={index} className="masonry-item">  
-                    <Image lazy src={item} onClick={()=>openView(index)}/>
+                <div key={index} className="masonry-item" data-aos="zoom-in">  
+                    <Image  src={item} onClick={()=>openView(index)}/>
                     {
                         visible && <Multi items={items} index={imgIndex} provisible={visible} closeImage={()=>setVisible(false)}/>
                     }

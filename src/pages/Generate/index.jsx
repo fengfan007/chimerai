@@ -5,6 +5,7 @@ import { DownOutline,CameraOutline,RightOutline,CloseOutline } from 'antd-mobile
 import vector from '@/assets/Vector.svg'
 import right from '@/assets/Arrow-right.png'
 import { useNavigate} from "react-router-dom";
+import CameraCapture from '@/components/CameraCapture'
 export default () => {
     
     const navigate = useNavigate();
@@ -30,6 +31,9 @@ export default () => {
             setVisible(false)
         }, 3000);
     })
+    const backSrc = (src)=>{
+        setActiveimage(src)
+    }
   return (
     <div className='generate-box'>
         <div style={{padding:'10px'}}>
@@ -65,14 +69,11 @@ export default () => {
         <div style={{padding:'10px'}}>
             <span>Recents <DownOutline /></span>
             <span style={{float:'right'}} >
-                <CameraOutline fontSize={20} onClick={() => {
-                    Toast.show({
-                        icon: 'fail',
-                        content: '功能暂未开放！',
-                    })
-                }}/>
+                <CameraCapture backSrc={backSrc}/>
             </span>
         </div>
+
+        
         <main>
             <div className='images-box'>
             {
