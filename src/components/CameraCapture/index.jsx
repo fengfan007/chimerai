@@ -11,7 +11,8 @@ const CameraCapture = ({backSrc}) => {
   const getMedia = () => {
     setVisible(true)
     const constraints = {
-      video: { width: '100%', height: '100vh' }
+      video: { width: '100%', height: '100vh' },
+      facingMode: { exact: "environment" } 
     };
     navigator.mediaDevices.getUserMedia(constraints)
       .then((stream) => {
@@ -45,7 +46,7 @@ const CameraCapture = ({backSrc}) => {
         {
             visible && 
             <div className='video-container'>
-                <video ref={videoRef} autoPlay playsInline />
+                <video  ref={videoRef} autoPlay playsInline />
                 {videoSrc ? <img className='img-bg' height="100%"  src={videoSrc} />:
                  <Image className='img-bg' height="80%"  src={vector} />}
                
