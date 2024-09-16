@@ -13,21 +13,21 @@ import {
   UnorderedListOutline,
   UserOutline,
 } from 'antd-mobile-icons'
-import Deisgn from './pages/Deisgn'
-import Assist from './pages/Assist'
-import Order from './pages/Order'
-import Profile from './pages/Profile'
-import ErrorPage from "./error-page";
-import './App.less'
-import design from './assets/design.png'
-import design2 from './assets/design2.png'
+import Deisgn from '@/pages/Deisgn'
+import Assist from '@/pages/Assist'
+import Order from '@/pages/Order'
+import Profile from '@/pages/Profile'
+import ErrorPage from "@/error-page";
+import '@/App.less'
+import design from '@/assets/design.png'
+import design2 from '@/assets/design2.png'
 
-import assist from './assets/assist.png'
-import assist2 from './assets/assist2.png'
-import order from './assets/order.png'
-import order2 from './assets/order2.png'
-import profile from './assets/profile.png'
-import profile2 from './assets/profile2.png'
+import assist from '@/assets/assist.png'
+import assist2 from '@/assets/assist2.png'
+import order from '@/assets/order.png'
+import order2 from '@/assets/order2.png'
+import profile from '@/assets/profile.png'
+import profile2 from '@/assets/profile2.png'
 
 const Bottom = ()=>{
 

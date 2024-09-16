@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { Toast, Grid, Space } from 'antd-mobile'
 import { RedoOutline, HeartOutline,RightOutline,HeartFill } from 'antd-mobile-icons'
-import Waterfall from '../../components/Waterfall'
-import frameImage from '../../assets/Frame.png'
+import Waterfall from '@/components/Waterfall'
+import frameImage from '@/assets/Frame.png'
 import {useNavigate} from "react-router-dom";
 import './index.less'
 export default () => {

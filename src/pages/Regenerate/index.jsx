@@ -3,7 +3,7 @@ import { Image, Swiper,Checkbox ,Skeleton,ProgressBar,Dialog,Toast} from 'antd-m
 import './index.less'
 import { useNavigate} from "react-router-dom";
 import { CloseOutline,CameraOutline,LinkOutline } from 'antd-mobile-icons'
-import share from '../../assets/Share.png'
+import share from '@/assets/Share.png'
 export default () => {
 
     const navigate = useNavigate();

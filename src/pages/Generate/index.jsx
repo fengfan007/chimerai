@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { Image, Space,Popover,Toast } from 'antd-mobile'
 import './index.less'
 import { DownOutline,CameraOutline,RightOutline,CloseOutline } from 'antd-mobile-icons'
-import vector from '../../assets/Vector.svg'
-import right from '../../assets/Arrow-right.png'
+import vector from '@/assets/Vector.svg'
+import right from '@/assets/Arrow-right.png'
 import { useNavigate} from "react-router-dom";
 export default () => {
     
