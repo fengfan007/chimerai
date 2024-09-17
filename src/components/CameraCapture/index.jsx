@@ -64,8 +64,11 @@ const CameraCapture = ({backSrc}) => {
             <div className='video-container'>
                 <Camera
                   onTakePhoto = { (dataUri) => { onTakePhoto(dataUri) } }
-                  idealFacingMode = {FACING_MODES.USER}
-                  isFullscreen = {true}
+                  idealFacingMode = {FACING_MODES.ENVIRONMENT}
+                  isMaxResolution = {true}
+                  idealResolution = {{width: 480, height: 780}}
+                  sizeFactor = {0.6}
+                  // isFullscreen = {true}
                 />
                 {/* <video  ref={videoRef} autoPlay playsInline onLoadedMetadata={handleLoadedMetadata}/> */}
                 {videoSrc ? <img className='img-bg'  src={videoSrc} />:
