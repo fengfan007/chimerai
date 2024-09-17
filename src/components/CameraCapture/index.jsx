@@ -66,7 +66,7 @@ const CameraCapture = ({backSrc}) => {
             <div className='video-container'>
                 <Camera
                   onTakePhoto = { (dataUri) => { onTakePhoto(dataUri) } }
-                  idealFacingMode = {FACING_MODES.ENVIRONMENT}
+                  // idealFacingMode = {FACING_MODES.ENVIRONMENT}
                   // isMaxResolution = {true}
                   idealResolution = {{width,height}}
                   sizeFactor = {1}
