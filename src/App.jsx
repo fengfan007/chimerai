@@ -36,9 +36,10 @@ const Bottom = ()=>{
   const { pathname } = location
 
   useEffect(()=>{
-    if(pathname == '' || pathname == '/'){
-      navigate('/deisgn')
-    }
+    // if(pathname == '' || pathname == '/'){
+    //   navigate('/deisgn')
+    // }
+    navigate('/deisgn')
   })
   
 
