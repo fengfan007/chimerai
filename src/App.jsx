@@ -39,7 +39,7 @@ const Bottom = ()=>{
     // if(pathname == '' || pathname == '/'){
     //   navigate('/deisgn')
     // }
-    navigate('/deisgn')
+    // navigate('/deisgn')
   })
   
 
