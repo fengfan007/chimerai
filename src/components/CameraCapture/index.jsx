@@ -55,12 +55,7 @@ const CameraCapture = ({backSrc}) => {
     backSrc(videoSrc)
     setVideoSrc(null)
  }
- const handleLoadedMetadata = (event) => {
-    // 视频元数据已加载后，将视频宽高设置为整个视频容器的宽高
-    const video = event.target;
-    video.style.width = '100%';
-    video.style.height = '100%';
-  };
+ 
   const onTakePhoto =(videoSrc)=> {
     setVideoSrc(videoSrc)
   }
@@ -72,10 +67,10 @@ const CameraCapture = ({backSrc}) => {
                 <Camera
                   onTakePhoto = { (dataUri) => { onTakePhoto(dataUri) } }
                   idealFacingMode = {FACING_MODES.ENVIRONMENT}
-                  isMaxResolution = {true}
-                  // idealResolution = {{width, height}}
+                  // isMaxResolution = {true}
+                  idealResolution = {{width,height}}
                   sizeFactor = {1}
-                  isFullscreen = {true}
+                  // isFullscreen = {true}
                 />
                 {/* <video  ref={videoRef} autoPlay playsInline onLoadedMetadata={handleLoadedMetadata}/> */}
                 {videoSrc ? <img className='img-bg'  src={videoSrc} />:
