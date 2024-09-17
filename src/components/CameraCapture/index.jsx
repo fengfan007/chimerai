@@ -14,6 +14,7 @@ const CameraCapture = ({backSrc}) => {
       video: { 
         width: '100vw', 
         height: '100vh',
+        frameRate: { min: 20, max: 60 },
         facingMode: { exact: "environment" } 
      },
       
@@ -57,7 +58,7 @@ const CameraCapture = ({backSrc}) => {
             visible && 
             <div className='video-container'>
                 <video  ref={videoRef} autoPlay playsInline onLoadedMetadata={handleLoadedMetadata}/>
-                {videoSrc ? <img className='img-bg' height="100%"  src={videoSrc} />:
+                {videoSrc ? <img className='img-bg'  src={videoSrc} />:
                  <Image className='img-bg' height="80%"  src={vector} />}
                
                 <div className='btn-container' >
