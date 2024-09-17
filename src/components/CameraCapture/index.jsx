@@ -9,7 +9,8 @@ const CameraCapture = ({backSrc}) => {
     const [visible, setVisible] = useState(false);
   const [videoSrc, setVideoSrc] = useState(null);
   const videoRef = useRef(null);
-
+  const width = window.innerWidth;
+  const height = window.innerHeight;
   const getMedia = () => {
     setVisible(true)
     // const constraints = {
@@ -66,7 +67,7 @@ const CameraCapture = ({backSrc}) => {
                   onTakePhoto = { (dataUri) => { onTakePhoto(dataUri) } }
                   idealFacingMode = {FACING_MODES.ENVIRONMENT}
                   isMaxResolution = {true}
-                  idealResolution = {{width: 480, height: 780}}
+                  idealResolution = {{width: width, height: height}}
                   sizeFactor = {0.6}
                   // isFullscreen = {true}
                 />
