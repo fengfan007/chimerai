@@ -13,23 +13,25 @@ const CameraCapture = ({backSrc}) => {
   const height = window.innerHeight;
   const getMedia = () => {
     setVisible(true)
-    // const constraints = {
-    //   video: { 
-    //     width: '100vw', 
-    //     height: '100vh',
-    //     frameRate: { min: 20, max: 60 },
-    //     facingMode: { exact: "environment" } 
-    //  },
+    const width = window.innerWidth
+    const height = window.innerHeight
+    const constraints = {
+      video: { 
+        width: width, 
+        height: height,
+        frameRate: { min: 20, max: 60 },
+        facingMode: { exact: "environment" } 
+     },
       
-    // };
-    // navigator.mediaDevices.getUserMedia(constraints)
-    //   .then((stream) => {
-    //     videoRef.current.srcObject = stream;
-    //     videoRef.current.play();
-    //   })
-    //   .catch((error) => {
-    //     console.error('Error accessing camera:', error);
-    //   });
+    };
+    navigator.mediaDevices.getUserMedia(constraints)
+      .then((stream) => {
+        videoRef.current.srcObject = stream;
+        videoRef.current.play();
+      })
+      .catch((error) => {
+        console.error('Error accessing camera:', error);
+      });
   };
   const takePhoto = () => {
     const canvas = document.createElement('canvas');
@@ -63,27 +65,31 @@ const CameraCapture = ({backSrc}) => {
         {
             visible && 
             <div className='video-container'>
-                <Camera
+                {/* <Camera
                   onTakePhoto = { (dataUri) => { onTakePhoto(dataUri) } }
                   idealFacingMode = {FACING_MODES.ENVIRONMENT}
                   isMaxResolution = {true}
                   idealResolution = {{width: width, height: height}}
                   sizeFactor = {0.6}
                   // isFullscreen = {true}
-                />
-                {/* <video  ref={videoRef} autoPlay playsInline onLoadedMetadata={handleLoadedMetadata}/> */}
+                /> */}
+                <video  ref={videoRef} autoPlay playsInline onLoadedMetadata={handleLoadedMetadata}/>
                 {videoSrc ? <img className='img-bg'  src={videoSrc} />:
                  <Image className='img-bg' height="80%"  src={vector} />}
                
-               {
+               {/* {
                 videoSrc &&
                 <div className='btn-container' >
                     {videoSrc && <CloseCircleFill fontSize={40} color='#fff' onClick={()=>setVideoSrc(null)}/>}
                     {videoSrc ? <div className='btn' onClick={()=>setVideoSrc(null)}>重拍</div>: <div className='btn' onClick={takePhoto}>拍摄</div>}
                     {videoSrc && <CheckCircleFill fontSize={40} color='#fff' onClick={()=>ok()}/>}
                 </div>
-               }
-                
+               } */}
+                <div className='btn-container' >
+                    {videoSrc && <CloseCircleFill fontSize={40} color='#fff' onClick={()=>setVideoSrc(null)}/>}
+                    {videoSrc ? <div className='btn' onClick={()=>setVideoSrc(null)}>重拍</div>: <div className='btn' onClick={takePhoto}>拍摄</div>}
+                    {videoSrc && <CheckCircleFill fontSize={40} color='#fff' onClick={()=>ok()}/>}
+                </div>
                 
             </div>
         }
