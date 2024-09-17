@@ -44,7 +44,7 @@ function Waterfall(){
         <>
             <div className="masonry" >  
                 {items.map((item, index) => (  
-                <div key={index} className="masonry-item" data-aos="zoom-in">  
+                <div key={index} className="masonry-item">  
                     <Image  src={item} onClick={()=>openView(index)}/>
                     {
                         visible && <Multi items={items} index={imgIndex} provisible={visible} closeImage={()=>setVisible(false)}/>

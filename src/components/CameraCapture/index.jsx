@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import {CameraOutline,CheckCircleFill,CloseCircleFill } from 'antd-mobile-icons'
+import Camera , { FACING_MODES, IMAGE_TYPES }from 'react-html5-camera-photo';
+import 'react-html5-camera-photo/build/css/index.css';
 import './index.less'
 import { Image} from 'antd-mobile'
 import vector from '@/assets/Vector.svg'
@@ -10,23 +12,23 @@ const CameraCapture = ({backSrc}) => {
 
   const getMedia = () => {
     setVisible(true)
-    const constraints = {
-      video: { 
-        width: '100vw', 
-        height: '100vh',
-        frameRate: { min: 20, max: 60 },
-        facingMode: { exact: "environment" } 
-     },
+    // const constraints = {
+    //   video: { 
+    //     width: '100vw', 
+    //     height: '100vh',
+    //     frameRate: { min: 20, max: 60 },
+    //     facingMode: { exact: "environment" } 
+    //  },
       
-    };
-    navigator.mediaDevices.getUserMedia(constraints)
-      .then((stream) => {
-        videoRef.current.srcObject = stream;
-        videoRef.current.play();
-      })
-      .catch((error) => {
-        console.error('Error accessing camera:', error);
-      });
+    // };
+    // navigator.mediaDevices.getUserMedia(constraints)
+    //   .then((stream) => {
+    //     videoRef.current.srcObject = stream;
+    //     videoRef.current.play();
+    //   })
+    //   .catch((error) => {
+    //     console.error('Error accessing camera:', error);
+    //   });
   };
   const takePhoto = () => {
     const canvas = document.createElement('canvas');
@@ -37,11 +39,11 @@ const CameraCapture = ({backSrc}) => {
   };
  const ok = () => {
     // 将视频流停止
-    const stream = videoRef.current.srcObject;
-    const tracks = stream.getTracks();
-    tracks.forEach((track) => {
-      track.stop();
-    });
+    // const stream = videoRef.current.srcObject;
+    // const tracks = stream.getTracks();
+    // tracks.forEach((track) => {
+    //   track.stop();
+    // });
     setVisible(false)
     backSrc(videoSrc)
     setVideoSrc(null)
@@ -52,20 +54,32 @@ const CameraCapture = ({backSrc}) => {
     video.style.width = '100%';
     video.style.height = '100%';
   };
+  const onTakePhoto =(videoSrc)=> {
+    setVideoSrc(videoSrc)
+  }
   return (
     <>
         {
             visible && 
             <div className='video-container'>
-                <video  ref={videoRef} autoPlay playsInline onLoadedMetadata={handleLoadedMetadata}/>
+                <Camera
+                  onTakePhoto = { (dataUri) => { onTakePhoto(dataUri) } }
+                  idealFacingMode = {FACING_MODES.USER}
+                  isFullscreen = {true}
+                />
+                {/* <video  ref={videoRef} autoPlay playsInline onLoadedMetadata={handleLoadedMetadata}/> */}
                 {videoSrc ? <img className='img-bg'  src={videoSrc} />:
                  <Image className='img-bg' height="80%"  src={vector} />}
                
+               {
+                videoSrc &&
                 <div className='btn-container' >
                     {videoSrc && <CloseCircleFill fontSize={40} color='#fff' onClick={()=>setVideoSrc(null)}/>}
                     {videoSrc ? <div className='btn' onClick={()=>setVideoSrc(null)}>重拍</div>: <div className='btn' onClick={takePhoto}>拍摄</div>}
                     {videoSrc && <CheckCircleFill fontSize={40} color='#fff' onClick={()=>ok()}/>}
                 </div>
+               }
+                
                 
             </div>
         }
