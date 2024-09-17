@@ -36,6 +36,7 @@ const Bottom = ()=>{
   const { pathname } = location
 
   useEffect(()=>{
+    console.log(pathname)
     // if(pathname == '' || pathname == '/'){
     //   navigate('/deisgn')
     // }
