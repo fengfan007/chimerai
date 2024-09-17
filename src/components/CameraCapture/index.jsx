@@ -40,6 +40,10 @@ const CameraCapture = ({backSrc}) => {
     canvas.getContext('2d').drawImage(videoRef.current, 0, 0, canvas.width, canvas.height);
     setVideoSrc(canvas.toDataURL('image/png'));
   };
+  const cancel =()=>{
+    setVisible(false)
+    setVideoSrc(null)
+  }
  const ok = () => {
     // 将视频流停止
     // const stream = videoRef.current.srcObject;
@@ -80,7 +84,7 @@ const CameraCapture = ({backSrc}) => {
                {
                 videoSrc &&
                 <div className='btn-container' >
-                    {videoSrc && <CloseCircleFill fontSize={40} color='#fff' onClick={()=>setVideoSrc(null)}/>}
+                    {videoSrc && <CloseCircleFill fontSize={40} color='#fff' onClick={()=>cancel()}/>}
                     {videoSrc ? <div className='btn' onClick={()=>setVideoSrc(null)}>重拍</div>: <div className='btn' onClick={takePhoto}>拍摄</div>}
                     {videoSrc && <CheckCircleFill fontSize={40} color='#fff' onClick={()=>ok()}/>}
                 </div>
