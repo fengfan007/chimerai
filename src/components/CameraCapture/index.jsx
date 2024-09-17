@@ -73,9 +73,9 @@ const CameraCapture = ({backSrc}) => {
                   onTakePhoto = { (dataUri) => { onTakePhoto(dataUri) } }
                   idealFacingMode = {FACING_MODES.ENVIRONMENT}
                   isMaxResolution = {true}
-                  idealResolution = {{width: width, height: height}}
+                  // idealResolution = {{width: width, height: height}}
                   sizeFactor = {1}
-                  // isFullscreen = {true}
+                  isFullscreen = {true}
                 />
                 {/* <video  ref={videoRef} autoPlay playsInline onLoadedMetadata={handleLoadedMetadata}/> */}
                 {videoSrc ? <img className='img-bg'  src={videoSrc} />:
