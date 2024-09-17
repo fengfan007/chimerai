@@ -9,8 +9,8 @@ const CameraCapture = ({backSrc}) => {
     const [visible, setVisible] = useState(false);
   const [videoSrc, setVideoSrc] = useState(null);
   const videoRef = useRef(null);
-  const width = window.innerWidth;
-  const height = window.innerHeight;
+  const width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+  const height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
   const getMedia = () => {
     setVisible(true)
     // const width = window.innerWidth
@@ -74,7 +74,7 @@ const CameraCapture = ({backSrc}) => {
                   idealFacingMode = {FACING_MODES.ENVIRONMENT}
                   isMaxResolution = {true}
                   idealResolution = {{width: width, height: height}}
-                  sizeFactor = {0.6}
+                  sizeFactor = {1}
                   // isFullscreen = {true}
                 />
                 {/* <video  ref={videoRef} autoPlay playsInline onLoadedMetadata={handleLoadedMetadata}/> */}
