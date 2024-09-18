@@ -79,7 +79,7 @@ const Bottom = ()=>{
     },
   ]
   return (
-    <TabBar safeArea defaultActiveKey="/deisgn" activeKey={pathname} onChange={value => setRouteActive(value)}>
+    <TabBar style={{padding:'10px 0'}} safeArea defaultActiveKey="/deisgn" activeKey={pathname} onChange={value => setRouteActive(value)}>
       {tabs.map(item => (
         <TabBar.Item key={item.key} icon={item.icon} title={item.title} />
       ))}
