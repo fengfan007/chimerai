@@ -53,28 +53,28 @@ const Bottom = ()=>{
       key: '/deisgn',
       title: 'Deisgn',
       icon: (active)=>{
-        return <div><img style={{width:'25px'}} src={active ? design:design2}/></div>
+        return <div><img style={{width:'1.8rem'}} src={active ? design:design2}/></div>
       },
     },
     {
       key: '/assist',
       title: 'Assist',
       icon: (active)=>{
-        return <div><img style={{width:'25px'}} src={active ? assist2:assist}/></div>
+        return <div><img style={{width:'1.8rem'}} src={active ? assist2:assist}/></div>
       },
     },
     {
       key: '/order',
       title: 'Order',
       icon: (active)=>{
-        return <div><img style={{width:'25px'}} src={active ? order2:order}/></div>
+        return <div><img style={{width:'1.8rem'}} src={active ? order2:order}/></div>
       },
     },
     {
       key: '/profile',
       title: 'Profile',
       icon: (active)=>{
-        return <div><img style={{width:'25px'}} src={active ? profile2:profile}/></div>
+        return <div><img style={{width:'1.8rem'}} src={active ? profile2:profile}/></div>
       },
     },
   ]
