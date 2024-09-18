@@ -88,11 +88,9 @@ const Bottom = ()=>{
 }
 function App() {
   function setVh() {
-    let parent = document.querySelector('.app');
+    let parent = document.querySelector('.body');
     let child = document.querySelector('.deisgn-box');
-    let bottom = document.querySelector('.bottom');
-    child.style.height = parent.offsetHeight-bottom.offsetHeight+ 'px';
-    console.log(parent.offsetHeight)
+    child.style.height = parent.offsetHeight + 'px';
   }
   useEffect(() => {
     setVh();
