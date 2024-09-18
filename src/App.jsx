@@ -37,9 +37,9 @@ const Bottom = ()=>{
 
   useEffect(()=>{
     console.log(pathname)
-    // if(pathname == '' || pathname == '/'){
-    //   navigate('/deisgn')
-    // }
+    if(pathname == '' || pathname == '/' || pathname == '/chimerai/'){
+      navigate('/deisgn')
+    }
     // navigate('/deisgn')
   })
   
@@ -79,7 +79,7 @@ const Bottom = ()=>{
     },
   ]
   return (
-    <TabBar defaultActiveKey="/deisgn" activeKey={pathname == '/'?'/deisgn':pathname} onChange={value => setRouteActive(value)}>
+    <TabBar safeArea defaultActiveKey="/deisgn" activeKey={pathname} onChange={value => setRouteActive(value)}>
       {tabs.map(item => (
         <TabBar.Item key={item.key} icon={item.icon} title={item.title} />
       ))}

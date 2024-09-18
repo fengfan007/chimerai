@@ -1,25 +1,51 @@
-import React , { useState }  from 'react';  
-import { Image, ImageViewer,Footer } from 'antd-mobile'
+import React , { useEffect, useState }  from 'react';  
+import { Image, ImageViewer,Footer,Button } from 'antd-mobile'
 import './index.css'; // 确保正确引入CSS文件  
  // 多张图片预览
- const Multi = ({items,index,provisible,closeImage}) => {
-    const [visible, setVisible] = useState(provisible)
+//  const Multi = ({items,index,provisible,closeImage}) => {
+//     const [visible, setVisible] = useState(provisible)
+//     return (
+//     <>
+//         <ImageViewer.Multi
+//             images={items}
+//             visible={visible}
+//             defaultIndex={index}
+//             onClose={() => {
+//                 closeImage()
+//             }}
+//         />
+//     </>
+//     )
+// }
+//单张图片预览
+const Single = ({imgSrc,closeImage}) => {
+    const [visible, setVisible] = useState(true)
+    
     return (
-    <>
-        <ImageViewer.Multi
-            images={items}
-            visible={visible}
-            defaultIndex={index}
-            onClose={() => {
-                closeImage()
-            }}
+      <>
+        <ImageViewer
+          classNames={{
+            mask: 'customize-mask',
+            body: 'customize-body',
+          }}
+          image={imgSrc}
+          visible={visible}
+          onClose={() => {
+            setVisible(false)
+          }}
+          afterClose={() => {
+            closeImage()
+          }}
         />
-    </>
+      </>
     )
-}
+  }
+
+
 function Waterfall(){
     const [visible, setVisible] = useState(false)
     const [imgIndex, setImgIndex] = useState(0)
+    const [imgSrc, setImgSrc] = useState('')
     const items = [
         'https://mind-file.oss-cn-beijing.aliyuncs.com/20240913/d71ceb79ee94fac66dfe183217fce785.jpg',
         'https://chimerai-main.oss-cn-beijing.aliyuncs.com/static/model_cover/SD.jpg',
@@ -36,7 +62,8 @@ function Waterfall(){
         'https://chimerai-main.oss-cn-beijing.aliyuncs.com/static/model_cover/AdamLippes.jpeg'
 
     ]
-   const openView = (i)=>{
+   const openView = (i,src)=>{
+    setImgSrc(src)
     setImgIndex(i)
     setVisible(true)
    }
@@ -45,15 +72,15 @@ function Waterfall(){
             <div className="masonry" >  
                 {items.map((item, index) => (  
                 <div key={index} className="masonry-item">  
-                    <Image  src={item} onClick={()=>openView(index)}/>
-                    {
-                        visible && <Multi items={items} index={imgIndex} provisible={visible} closeImage={()=>setVisible(false)}/>
-                    }
-                    
+                    <Image  src={item} onClick={()=>openView(index,item)}/>
                 </div>  
                 ))}  
+                
             </div>  
             <Footer label='没有更多了'></Footer>
+            {
+                visible && <Single imgSrc={imgSrc} closeImage={()=>setVisible(false)}/>
+            }
         </>
         
     )
