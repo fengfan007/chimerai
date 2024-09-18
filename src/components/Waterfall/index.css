@@ -1,0 +1,24 @@
+.masonry {  
+  column-count: 4;  
+  column-gap: 1em;  
+  width: 100%;  
+}  
+  
+.masonry-item {  
+  break-inside: avoid-column;  
+  margin-bottom: 1em;  
+  border-radius: .625rem;
+  overflow: hidden;
+}  
+  
+@media (max-width: 1200px) {  
+  .masonry {  
+    column-count: 3;  
+  }  
+}  
+  
+@media (max-width: 800px) {  
+  .masonry {  
+    column-count: 2;  
+  }  
+}  
