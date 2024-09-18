@@ -11,8 +11,12 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
+  --vh: 100%;
 
+}
+.full-height {
+      height: calc(var(--vh, 1vh) * 100) !important;
+    }
 a {
   font-weight: 500;
   color: #646cff;
