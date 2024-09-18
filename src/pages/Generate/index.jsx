@@ -7,7 +7,7 @@ import right from '@/assets/Arrow-right.png'
 import { useNavigate} from "react-router-dom";
 import CameraCapture from '@/components/CameraCapture'
 export default () => {
-    
+
     const navigate = useNavigate();
     const items = [
         'https://mind-file.oss-cn-beijing.aliyuncs.com/20240913/d71ceb79ee94fac66dfe183217fce785.jpg',
@@ -36,45 +36,44 @@ export default () => {
     }
   return (
     <div className='generate-box'>
-        <div className='header'>
-            <div style={{padding:'10px'}}>
-                <CloseOutline fontSize={25} onClick={()=>navigate("/deisgn")}/>
-                
-                <span style={{float:'right',color:' #FA8728',fontWeight:'500'}} onClick={()=>navigate("/regenerate")}>
-                    <Space>
-                        Generate
-                        <img style={{width:'20px',verticalAlign:'middle'}} src={right}/>
-                    </Space>
-                </span>
-            </div>
-            <header>
-                <Popover
-                    visible={visible}
-                    placement='bottom-start'
-                    mode='dark'
-                    content={
-                        <>
-                        For better image effect, please<br/> upload a clear, front view,<br/> unobstructed image
-                        </>
-                    }
-                >
-                    <div className='bg'>
-                        {
-                            activeimage?<Image width="100%"  src={activeimage} />:
-                            <Image height="80%"  src={vector} />
-                        }
-                        
-                    </div>
-                </Popover>
-            </header>
-            <div style={{padding:'10px'}}>
-                <span>Recents <DownOutline /></span>
-                <span style={{float:'right'}} >
-                    <CameraCapture backSrc={backSrc}/>
-                </span>
-            </div>
+        <div style={{padding:'10px'}}>
+            <CloseOutline fontSize={25} onClick={()=>navigate("/deisgn")}/>
 
+            <span style={{float:'right',color:' #FA8728',fontWeight:'500'}} onClick={()=>navigate("/regenerate")}>
+                <Space>
+                    Generate
+                    <img style={{width:'20px',verticalAlign:'middle'}} src={right}/>
+                </Space>
+            </span>
         </div>
+        <header>
+            <Popover
+                visible={visible}
+                placement='bottom-start'
+                mode='dark'
+                content={
+                    <>
+                    For better image effect, please<br/> upload a clear, front view,<br/> unobstructed image
+                    </>
+                }
+            >
+                <div className='bg'>
+                    {
+                        activeimage?<Image width="100%"  src={activeimage} />:
+                        <Image height="80%"  src={vector} />
+                    }
+
+                </div>
+            </Popover>
+        </header>
+        <div style={{padding:'10px'}}>
+            <span>Recents <DownOutline /></span>
+            <span style={{float:'right'}} >
+                <CameraCapture backSrc={backSrc}/>
+            </span>
+        </div>
+
+
         <main>
             <div className='images-box'>
             {
@@ -84,7 +83,7 @@ export default () => {
                             <Image onClick={()=>setActiveimage(item)} src={item} className='imageItem' fit='fill'/>
                         </div>
                     )
-                    
+
                 })
             }
             </div>

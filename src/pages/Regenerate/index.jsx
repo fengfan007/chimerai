@@ -47,7 +47,7 @@ export default () => {
                 navigate("/deisgn")
             },
         })
-        
+
     }
   return (
     <div className='regenerate-box'>
@@ -70,7 +70,7 @@ export default () => {
             }}
           />
         }
-       
+
         <header>
             {
                 skeletonShow?<Skeleton animated className="customSkeleton" />:
@@ -78,15 +78,14 @@ export default () => {
                     <Image fit='fill' src="https://chimerai-main.oss-cn-beijing.aliyuncs.com/static/model_cover/SD.jpg" />
                 </div>
             }
-           
+
         </header>
         <div style={{padding:'.5rem 1.25rem'}}>
             <span>
-                <Checkbox 
-                    className={skeletonShow && 'check-box-opa'}
+                <Checkbox
                     ndeterminate={value.length > 0 && value.length < list.length}
                     checked={value.length === list.length}
-                    style={{'--icon-size':'14px','--font-size':'14px'}} 
+                    style={{'--icon-size':'14px','--font-size':'14px'}}
                     onChange={checked => {
                     if (checked) {
                         setValue(list)
@@ -96,7 +95,7 @@ export default () => {
                     }}>Select All</Checkbox>
             </span>
         </div>
-        
+
         <main>
             <div className='imgagesList'>
                 <Checkbox.Group
@@ -109,18 +108,18 @@ export default () => {
                     list.map((item)=>{
                         return skeletonShow?<Skeleton animated className="check-box" />:
                         <div className='check-box'>
-                            <Checkbox 
+                            <Checkbox
                                 key={item} value={item}
                                 style={{
                                     '--icon-size': '14px',
-                                }} 
+                                }}
                                 className='check-btn'>
 
                                 </Checkbox>
                             <Image src={item}  className='imageItem' fit='fill'/>
                         </div>
-                        
-                        
+
+
                     })
                 }
 
@@ -128,7 +127,7 @@ export default () => {
             </div>
         </main>
         {
-            !skeletonShow && 
+            !skeletonShow &&
             <footer>
                 <button className='btn' onClick={()=>RegenerateEvent()}>Regenerate</button>
             </footer>
