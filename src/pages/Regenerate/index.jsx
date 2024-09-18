@@ -83,6 +83,7 @@ export default () => {
         <div style={{padding:'.5rem 1.25rem'}}>
             <span>
                 <Checkbox 
+                    className={skeletonShow && 'check-box-opa'}
                     ndeterminate={value.length > 0 && value.length < list.length}
                     checked={value.length === list.length}
                     style={{'--icon-size':'14px','--font-size':'14px'}} 

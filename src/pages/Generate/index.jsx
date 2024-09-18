@@ -36,44 +36,45 @@ export default () => {
     }
   return (
     <div className='generate-box'>
-        <div style={{padding:'10px'}}>
-            <CloseOutline fontSize={25} onClick={()=>navigate("/deisgn")}/>
-            
-            <span style={{float:'right',color:' #FA8728',fontWeight:'500'}} onClick={()=>navigate("/regenerate")}>
-                <Space>
-                    Generate
-                    <img style={{width:'20px',verticalAlign:'middle'}} src={right}/>
-                </Space>
-            </span>
-        </div>
-        <header>
-            <Popover
-                visible={visible}
-                placement='bottom-start'
-                mode='dark'
-                content={
-                    <>
-                    For better image effect, please<br/> upload a clear, front view,<br/> unobstructed image
-                    </>
-                }
-            >
-                <div className='bg'>
-                    {
-                        activeimage?<Image width="100%"  src={activeimage} />:
-                        <Image height="80%"  src={vector} />
+        <div className='header'>
+            <div style={{padding:'10px'}}>
+                <CloseOutline fontSize={25} onClick={()=>navigate("/deisgn")}/>
+                
+                <span style={{float:'right',color:' #FA8728',fontWeight:'500'}} onClick={()=>navigate("/regenerate")}>
+                    <Space>
+                        Generate
+                        <img style={{width:'20px',verticalAlign:'middle'}} src={right}/>
+                    </Space>
+                </span>
+            </div>
+            <header>
+                <Popover
+                    visible={visible}
+                    placement='bottom-start'
+                    mode='dark'
+                    content={
+                        <>
+                        For better image effect, please<br/> upload a clear, front view,<br/> unobstructed image
+                        </>
                     }
-                    
-                </div>
-            </Popover>
-        </header>
-        <div style={{padding:'10px'}}>
-            <span>Recents <DownOutline /></span>
-            <span style={{float:'right'}} >
-                <CameraCapture backSrc={backSrc}/>
-            </span>
-        </div>
+                >
+                    <div className='bg'>
+                        {
+                            activeimage?<Image width="100%"  src={activeimage} />:
+                            <Image height="80%"  src={vector} />
+                        }
+                        
+                    </div>
+                </Popover>
+            </header>
+            <div style={{padding:'10px'}}>
+                <span>Recents <DownOutline /></span>
+                <span style={{float:'right'}} >
+                    <CameraCapture backSrc={backSrc}/>
+                </span>
+            </div>
 
-        
+        </div>
         <main>
             <div className='images-box'>
             {

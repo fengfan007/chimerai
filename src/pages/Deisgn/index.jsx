@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import { Toast, Grid, Space } from 'antd-mobile'
 import { RedoOutline, HeartOutline,RightOutline,HeartFill } from 'antd-mobile-icons'
 import Waterfall from '@/components/Waterfall'
@@ -8,6 +8,17 @@ import './index.less'
 export default () => {
     const navigate = useNavigate();
     const [active, setActive] = useState(false)
+    function setVh() {
+        let parent = document.querySelector('.app');
+        let child = document.querySelector('.deisgn-box');
+        let bottom = document.querySelector('.bottom');
+        child.style.height = parent.offsetHeight-bottom.offsetHeight+ 'px';
+        console.log(parent.offsetHeight)
+      }
+      useEffect(() => {
+        setVh();
+        window.addEventListener('resize', setVh);
+      })
   return (
     <div className="deisgn-box">
         <header>
